@@ -10,9 +10,17 @@
 		F4E89B012C16CAB1000044CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B002C16CAB1000044CA /* AppDelegate.swift */; };
 		F4E89B032C16CAB1000044CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B022C16CAB1000044CA /* SceneDelegate.swift */; };
 		F4E89B052C16CAB1000044CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B042C16CAB1000044CA /* ViewController.swift */; };
-		F4E89B082C16CAB1000044CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4E89B062C16CAB1000044CA /* Main.storyboard */; };
 		F4E89B0A2C16CAB3000044CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4E89B092C16CAB3000044CA /* Assets.xcassets */; };
 		F4E89B0D2C16CAB3000044CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4E89B0B2C16CAB3000044CA /* LaunchScreen.storyboard */; };
+		F4E89B152C16CBC3000044CA /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B142C16CBC3000044CA /* TabBarViewController.swift */; };
+		F4E89B172C16CE0C000044CA /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B162C16CE0C000044CA /* ProductViewController.swift */; };
+		F4E89B192C16CE2E000044CA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B182C16CE2E000044CA /* SearchViewController.swift */; };
+		F4E89B1B2C16CE44000044CA /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B1A2C16CE44000044CA /* ScannerViewController.swift */; };
+		F4E89B1D2C16D067000044CA /* NewProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B1C2C16D066000044CA /* NewProductViewController.swift */; };
+		F4E89B1F2C16D320000044CA /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B1E2C16D320000044CA /* OnboardingViewController.swift */; };
+		F4E89B222C16DCF0000044CA /* OnboardingFirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B212C16DCF0000044CA /* OnboardingFirstScreenViewController.swift */; };
+		F4E89B242C16DCFC000044CA /* OnboardingSecondScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B232C16DCFC000044CA /* OnboardingSecondScreenViewController.swift */; };
+		F4E89B262C16E0AF000044CA /* OnboardingThreeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B252C16E0AF000044CA /* OnboardingThreeScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +28,18 @@
 		F4E89B002C16CAB1000044CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4E89B022C16CAB1000044CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F4E89B042C16CAB1000044CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F4E89B072C16CAB1000044CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4E89B092C16CAB3000044CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4E89B0C2C16CAB3000044CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4E89B0E2C16CAB3000044CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4E89B142C16CBC3000044CA /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		F4E89B162C16CE0C000044CA /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		F4E89B182C16CE2E000044CA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		F4E89B1A2C16CE44000044CA /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		F4E89B1C2C16D066000044CA /* NewProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProductViewController.swift; sourceTree = "<group>"; };
+		F4E89B1E2C16D320000044CA /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		F4E89B212C16DCF0000044CA /* OnboardingFirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirstScreenViewController.swift; sourceTree = "<group>"; };
+		F4E89B232C16DCFC000044CA /* OnboardingSecondScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondScreenViewController.swift; sourceTree = "<group>"; };
+		F4E89B252C16E0AF000044CA /* OnboardingThreeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThreeScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +75,28 @@
 				F4E89B002C16CAB1000044CA /* AppDelegate.swift */,
 				F4E89B022C16CAB1000044CA /* SceneDelegate.swift */,
 				F4E89B042C16CAB1000044CA /* ViewController.swift */,
-				F4E89B062C16CAB1000044CA /* Main.storyboard */,
 				F4E89B092C16CAB3000044CA /* Assets.xcassets */,
 				F4E89B0B2C16CAB3000044CA /* LaunchScreen.storyboard */,
 				F4E89B0E2C16CAB3000044CA /* Info.plist */,
+				F4E89B202C16DCCD000044CA /* Onboarding */,
+				F4E89B142C16CBC3000044CA /* TabBarViewController.swift */,
+				F4E89B1C2C16D066000044CA /* NewProductViewController.swift */,
+				F4E89B162C16CE0C000044CA /* ProductViewController.swift */,
+				F4E89B182C16CE2E000044CA /* SearchViewController.swift */,
+				F4E89B1A2C16CE44000044CA /* ScannerViewController.swift */,
 			);
 			path = "YP-Sklad";
+			sourceTree = "<group>";
+		};
+		F4E89B202C16DCCD000044CA /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F4E89B1E2C16D320000044CA /* OnboardingViewController.swift */,
+				F4E89B212C16DCF0000044CA /* OnboardingFirstScreenViewController.swift */,
+				F4E89B232C16DCFC000044CA /* OnboardingSecondScreenViewController.swift */,
+				F4E89B252C16E0AF000044CA /* OnboardingThreeScreenViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +159,6 @@
 			files = (
 				F4E89B0D2C16CAB3000044CA /* LaunchScreen.storyboard in Resources */,
 				F4E89B0A2C16CAB3000044CA /* Assets.xcassets in Resources */,
-				F4E89B082C16CAB1000044CA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +169,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4E89B1B2C16CE44000044CA /* ScannerViewController.swift in Sources */,
+				F4E89B192C16CE2E000044CA /* SearchViewController.swift in Sources */,
+				F4E89B152C16CBC3000044CA /* TabBarViewController.swift in Sources */,
+				F4E89B1D2C16D067000044CA /* NewProductViewController.swift in Sources */,
+				F4E89B222C16DCF0000044CA /* OnboardingFirstScreenViewController.swift in Sources */,
 				F4E89B052C16CAB1000044CA /* ViewController.swift in Sources */,
+				F4E89B262C16E0AF000044CA /* OnboardingThreeScreenViewController.swift in Sources */,
+				F4E89B242C16DCFC000044CA /* OnboardingSecondScreenViewController.swift in Sources */,
 				F4E89B012C16CAB1000044CA /* AppDelegate.swift in Sources */,
+				F4E89B1F2C16D320000044CA /* OnboardingViewController.swift in Sources */,
+				F4E89B172C16CE0C000044CA /* ProductViewController.swift in Sources */,
 				F4E89B032C16CAB1000044CA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +187,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F4E89B062C16CAB1000044CA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F4E89B072C16CAB1000044CA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F4E89B0B2C16CAB3000044CA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -218,7 +250,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -275,7 +307,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -297,9 +329,8 @@
 				INFOPLIST_FILE = "YP-Sklad/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +338,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Blanxxty.YP-Sklad";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -325,9 +359,8 @@
 				INFOPLIST_FILE = "YP-Sklad/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,6 +368,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Blanxxty.YP-Sklad";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
