@@ -1,0 +1,6 @@
+framework module Pods_YP_Sklad {
+  umbrella header "Pods-YP-Sklad-umbrella.h"
+
+  export *
+  module * { export * }
+}
