@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08320073E9E822D3D4D763A1 /* Pods_YP_Sklad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0F55CDB47F8956D4BF725C /* Pods_YP_Sklad.framework */; };
+		F47302F42C1724D300B0C027 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47302F32C1724D300B0C027 /* RegisterViewController.swift */; };
+		F47302F82C172BA500B0C027 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F47302F72C172BA500B0C027 /* GoogleService-Info.plist */; };
+		F47302FA2C172EA700B0C027 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47302F92C172EA700B0C027 /* WelcomeViewController.swift */; };
+		F47302FC2C1732F300B0C027 /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47302FB2C1732F300B0C027 /* EnterViewController.swift */; };
 		F4E89B012C16CAB1000044CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B002C16CAB1000044CA /* AppDelegate.swift */; };
 		F4E89B032C16CAB1000044CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B022C16CAB1000044CA /* SceneDelegate.swift */; };
 		F4E89B052C16CAB1000044CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B042C16CAB1000044CA /* ViewController.swift */; };
@@ -24,6 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14B083C6E1B7D808778CA3AC /* Pods-YP-Sklad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YP-Sklad.release.xcconfig"; path = "Target Support Files/Pods-YP-Sklad/Pods-YP-Sklad.release.xcconfig"; sourceTree = "<group>"; };
+		5B1AB04D03DDCBDE7E761061 /* Pods-YP-Sklad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YP-Sklad.debug.xcconfig"; path = "Target Support Files/Pods-YP-Sklad/Pods-YP-Sklad.debug.xcconfig"; sourceTree = "<group>"; };
+		DC0F55CDB47F8956D4BF725C /* Pods_YP_Sklad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YP_Sklad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47302F32C1724D300B0C027 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		F47302F72C172BA500B0C027 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F47302F92C172EA700B0C027 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		F47302FB2C1732F300B0C027 /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
 		F4E89AFD2C16CAB1000044CA /* YP-Sklad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YP-Sklad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E89B002C16CAB1000044CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4E89B022C16CAB1000044CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,17 +59,59 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08320073E9E822D3D4D763A1 /* Pods_YP_Sklad.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B94EE739761B13CBA0EF28D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B1AB04D03DDCBDE7E761061 /* Pods-YP-Sklad.debug.xcconfig */,
+				14B083C6E1B7D808778CA3AC /* Pods-YP-Sklad.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DF8D386874B8E3AD73E4A51C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC0F55CDB47F8956D4BF725C /* Pods_YP_Sklad.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F47302F12C17248200B0C027 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				F4E89B142C16CBC3000044CA /* TabBarViewController.swift */,
+				F4E89B162C16CE0C000044CA /* ProductViewController.swift */,
+				F4E89B1C2C16D066000044CA /* NewProductViewController.swift */,
+				F4E89B182C16CE2E000044CA /* SearchViewController.swift */,
+				F4E89B1A2C16CE44000044CA /* ScannerViewController.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		F47302F22C17249D00B0C027 /* Authenticate */ = {
+			isa = PBXGroup;
+			children = (
+				F47302F92C172EA700B0C027 /* WelcomeViewController.swift */,
+				F47302F32C1724D300B0C027 /* RegisterViewController.swift */,
+				F47302FB2C1732F300B0C027 /* EnterViewController.swift */,
+			);
+			path = Authenticate;
+			sourceTree = "<group>";
+		};
 		F4E89AF42C16CAB1000044CA = {
 			isa = PBXGroup;
 			children = (
 				F4E89AFF2C16CAB1000044CA /* YP-Sklad */,
 				F4E89AFE2C16CAB1000044CA /* Products */,
+				3B94EE739761B13CBA0EF28D /* Pods */,
+				DF8D386874B8E3AD73E4A51C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,12 +132,10 @@
 				F4E89B092C16CAB3000044CA /* Assets.xcassets */,
 				F4E89B0B2C16CAB3000044CA /* LaunchScreen.storyboard */,
 				F4E89B0E2C16CAB3000044CA /* Info.plist */,
+				F47302F72C172BA500B0C027 /* GoogleService-Info.plist */,
 				F4E89B202C16DCCD000044CA /* Onboarding */,
-				F4E89B142C16CBC3000044CA /* TabBarViewController.swift */,
-				F4E89B1C2C16D066000044CA /* NewProductViewController.swift */,
-				F4E89B162C16CE0C000044CA /* ProductViewController.swift */,
-				F4E89B182C16CE2E000044CA /* SearchViewController.swift */,
-				F4E89B1A2C16CE44000044CA /* ScannerViewController.swift */,
+				F47302F22C17249D00B0C027 /* Authenticate */,
+				F47302F12C17248200B0C027 /* MainTabBar */,
 			);
 			path = "YP-Sklad";
 			sourceTree = "<group>";
@@ -106,9 +158,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4E89B112C16CAB3000044CA /* Build configuration list for PBXNativeTarget "YP-Sklad" */;
 			buildPhases = (
+				C56D2A1A676AAAF00C63A9F7 /* [CP] Check Pods Manifest.lock */,
 				F4E89AF92C16CAB1000044CA /* Sources */,
 				F4E89AFA2C16CAB1000044CA /* Frameworks */,
 				F4E89AFB2C16CAB1000044CA /* Resources */,
+				272EA37931CBB7A80A0B6A0D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -159,10 +213,53 @@
 			files = (
 				F4E89B0D2C16CAB3000044CA /* LaunchScreen.storyboard in Resources */,
 				F4E89B0A2C16CAB3000044CA /* Assets.xcassets in Resources */,
+				F47302F82C172BA500B0C027 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		272EA37931CBB7A80A0B6A0D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YP-Sklad/Pods-YP-Sklad-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YP-Sklad/Pods-YP-Sklad-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YP-Sklad/Pods-YP-Sklad-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C56D2A1A676AAAF00C63A9F7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YP-Sklad-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F4E89AF92C16CAB1000044CA /* Sources */ = {
@@ -170,9 +267,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4E89B1B2C16CE44000044CA /* ScannerViewController.swift in Sources */,
+				F47302F42C1724D300B0C027 /* RegisterViewController.swift in Sources */,
 				F4E89B192C16CE2E000044CA /* SearchViewController.swift in Sources */,
 				F4E89B152C16CBC3000044CA /* TabBarViewController.swift in Sources */,
 				F4E89B1D2C16D067000044CA /* NewProductViewController.swift in Sources */,
+				F47302FC2C1732F300B0C027 /* EnterViewController.swift in Sources */,
 				F4E89B222C16DCF0000044CA /* OnboardingFirstScreenViewController.swift in Sources */,
 				F4E89B052C16CAB1000044CA /* ViewController.swift in Sources */,
 				F4E89B262C16E0AF000044CA /* OnboardingThreeScreenViewController.swift in Sources */,
@@ -181,6 +280,7 @@
 				F4E89B1F2C16D320000044CA /* OnboardingViewController.swift in Sources */,
 				F4E89B172C16CE0C000044CA /* ProductViewController.swift in Sources */,
 				F4E89B032C16CAB1000044CA /* SceneDelegate.swift in Sources */,
+				F47302FA2C172EA700B0C027 /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,7 +335,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -298,7 +398,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -319,6 +419,7 @@
 		};
 		F4E89B122C16CAB3000044CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B1AB04D03DDCBDE7E761061 /* Pods-YP-Sklad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -349,6 +450,7 @@
 		};
 		F4E89B132C16CAB3000044CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14B083C6E1B7D808778CA3AC /* Pods-YP-Sklad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
