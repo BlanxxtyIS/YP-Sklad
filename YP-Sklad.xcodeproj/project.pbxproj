@@ -12,6 +12,8 @@
 		F47302F82C172BA500B0C027 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F47302F72C172BA500B0C027 /* GoogleService-Info.plist */; };
 		F47302FA2C172EA700B0C027 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47302F92C172EA700B0C027 /* WelcomeViewController.swift */; };
 		F47302FC2C1732F300B0C027 /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47302FB2C1732F300B0C027 /* EnterViewController.swift */; };
+		F47302FF2C181EA700B0C027 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47302FE2C181EA700B0C027 /* ProductTableViewCell.swift */; };
+		F47303012C18207E00B0C027 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47303002C18207E00B0C027 /* ProductModel.swift */; };
 		F4E89B012C16CAB1000044CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B002C16CAB1000044CA /* AppDelegate.swift */; };
 		F4E89B032C16CAB1000044CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B022C16CAB1000044CA /* SceneDelegate.swift */; };
 		F4E89B052C16CAB1000044CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B042C16CAB1000044CA /* ViewController.swift */; };
@@ -36,6 +38,8 @@
 		F47302F72C172BA500B0C027 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F47302F92C172EA700B0C027 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		F47302FB2C1732F300B0C027 /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
+		F47302FE2C181EA700B0C027 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		F47303002C18207E00B0C027 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		F4E89AFD2C16CAB1000044CA /* YP-Sklad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YP-Sklad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E89B002C16CAB1000044CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4E89B022C16CAB1000044CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,7 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				F4E89B142C16CBC3000044CA /* TabBarViewController.swift */,
-				F4E89B162C16CE0C000044CA /* ProductViewController.swift */,
+				F47302FD2C181E8600B0C027 /* ProductViewController */,
 				F4E89B1C2C16D066000044CA /* NewProductViewController.swift */,
 				F4E89B182C16CE2E000044CA /* SearchViewController.swift */,
 				F4E89B1A2C16CE44000044CA /* ScannerViewController.swift */,
@@ -103,6 +107,15 @@
 				F47302FB2C1732F300B0C027 /* EnterViewController.swift */,
 			);
 			path = Authenticate;
+			sourceTree = "<group>";
+		};
+		F47302FD2C181E8600B0C027 /* ProductViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F4E89B162C16CE0C000044CA /* ProductViewController.swift */,
+				F47302FE2C181EA700B0C027 /* ProductTableViewCell.swift */,
+			);
+			path = ProductViewController;
 			sourceTree = "<group>";
 		};
 		F4E89AF42C16CAB1000044CA = {
@@ -131,6 +144,7 @@
 				F4E89B042C16CAB1000044CA /* ViewController.swift */,
 				F4E89B092C16CAB3000044CA /* Assets.xcassets */,
 				F4E89B0B2C16CAB3000044CA /* LaunchScreen.storyboard */,
+				F47303002C18207E00B0C027 /* ProductModel.swift */,
 				F4E89B0E2C16CAB3000044CA /* Info.plist */,
 				F47302F72C172BA500B0C027 /* GoogleService-Info.plist */,
 				F4E89B202C16DCCD000044CA /* Onboarding */,
@@ -269,12 +283,14 @@
 				F4E89B1B2C16CE44000044CA /* ScannerViewController.swift in Sources */,
 				F47302F42C1724D300B0C027 /* RegisterViewController.swift in Sources */,
 				F4E89B192C16CE2E000044CA /* SearchViewController.swift in Sources */,
+				F47303012C18207E00B0C027 /* ProductModel.swift in Sources */,
 				F4E89B152C16CBC3000044CA /* TabBarViewController.swift in Sources */,
 				F4E89B1D2C16D067000044CA /* NewProductViewController.swift in Sources */,
 				F47302FC2C1732F300B0C027 /* EnterViewController.swift in Sources */,
 				F4E89B222C16DCF0000044CA /* OnboardingFirstScreenViewController.swift in Sources */,
 				F4E89B052C16CAB1000044CA /* ViewController.swift in Sources */,
 				F4E89B262C16E0AF000044CA /* OnboardingThreeScreenViewController.swift in Sources */,
+				F47302FF2C181EA700B0C027 /* ProductTableViewCell.swift in Sources */,
 				F4E89B242C16DCFC000044CA /* OnboardingSecondScreenViewController.swift in Sources */,
 				F4E89B012C16CAB1000044CA /* AppDelegate.swift in Sources */,
 				F4E89B1F2C16D320000044CA /* OnboardingViewController.swift in Sources */,

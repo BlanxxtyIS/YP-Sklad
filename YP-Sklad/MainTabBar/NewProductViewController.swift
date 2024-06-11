@@ -11,10 +11,33 @@ class NewProductViewController: UIViewController {
     
     // MARK: - Public Properties
     // MARK: - Private Properties
+    private lazy var backgroundImage: UIImageView = {
+       let image = UIImage(named: "BackgroundImage")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var backgroundView: UIView = {
+       let view = UIView()
+        view.backgroundColor = .white
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.masksToBounds = false
+        view.layer.cornerRadius = 16
+        // Настройка тени
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 4
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     private lazy var productName: UILabel = {
         let label = UILabel()
-        label.text = "Наименование:"
-        label.textColor = .systemBlue
+        label.text = "НАИМЕНОВАНИЕ:"
+        label.font = .systemFont(ofSize: 10, weight: .bold)
+        label.textColor = .kDarkBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -37,8 +60,9 @@ class NewProductViewController: UIViewController {
     //Размер
     private lazy var productSize: UILabel = {
         let label = UILabel()
-        label.text = "Размер: X-Y-Z"
-        label.textColor = .systemBlue
+        label.text = "РАЗМЕР: X-Y-Z"
+        label.font = .systemFont(ofSize: 10, weight: .bold)
+        label.textColor = .kDarkBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -101,8 +125,9 @@ class NewProductViewController: UIViewController {
     //Вес
     private lazy var productWeight: UILabel = {
         let label = UILabel()
-        label.text = "Вес:"
-        label.textColor = .systemBlue
+        label.text = "ВЕС:"
+        label.font = .systemFont(ofSize: 10, weight: .bold)
+        label.textColor = .kDarkBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -125,8 +150,9 @@ class NewProductViewController: UIViewController {
     //Количество
     private lazy var productCount: UILabel = {
         let label = UILabel()
-        label.text = "Количество и цена:"
-        label.textColor = .systemBlue
+        label.text = "КОЛИЧЕСТВО И ЦЕНА:"
+        label.font = .systemFont(ofSize: 10, weight: .bold)
+        label.textColor = .kDarkBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -174,8 +200,9 @@ class NewProductViewController: UIViewController {
     //Складирование
     private lazy var productSclading: UILabel = {
         let label = UILabel()
-        label.text = "Можно складировать?"
-        label.textColor = .systemBlue
+        label.text = "МОЖНО СКЛАДИРОВАТЬ?"
+        label.font = .systemFont(ofSize: 10, weight: .bold)
+        label.textColor = .kDarkBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -197,8 +224,9 @@ class NewProductViewController: UIViewController {
     
     private lazy var productKontragent: UILabel = {
         let label = UILabel()
-        label.text = "Поставщик:"
-        label.textColor = .systemBlue
+        label.text = "ПОСТАВЩИК:"
+        label.font = .systemFont(ofSize: 10, weight: .bold)
+        label.textColor = .kDarkBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -221,11 +249,13 @@ class NewProductViewController: UIViewController {
     private lazy var saveProductButton: UIButton = {
        let button = UIButton()
         button.addTarget(self, action: #selector(saveProductButtonTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .blue
         button.setTitle("Сохранить", for: .normal)
+        button.backgroundColor = .kDarkBlue
+        button.layer.cornerRadius = 5.0
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
@@ -247,16 +277,26 @@ class NewProductViewController: UIViewController {
     }
     
     private func setupUI() {
+        view.addSubview(backgroundImage)
+        view.addSubview(backgroundView)
         let allViews = [productName, productNameCreate, productSize, sizeStackView, productWeight, productWeightCreate, productCount, productCountAndPrice, productSclading, productScladingCreate, productKontragent, productKontagentCreate, saveProductButton]
         
         allViews.forEach { view in
-            self.view.addSubview(view)
+            backgroundView.addSubview(view)
         }
         
         NSLayoutConstraint.activate([
-            productName.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            backgroundImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            backgroundImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            backgroundView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            backgroundView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
+            
+            productName.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 10),
             productName.bottomAnchor.constraint(equalTo: productNameCreate.topAnchor),
-            productName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            productName.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 25),
             
             productNameCreate.topAnchor.constraint(equalTo: productName.bottomAnchor, constant: -10),
             productNameCreate.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 25),
@@ -307,7 +347,7 @@ class NewProductViewController: UIViewController {
             productKontagentCreate.heightAnchor.constraint(equalToConstant: 44),
             
             saveProductButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            saveProductButton.topAnchor.constraint(equalTo: productKontagentCreate.bottomAnchor, constant: 10)
+            saveProductButton.topAnchor.constraint(equalTo: productKontagentCreate.bottomAnchor, constant: 20)
         ])
     }
 }

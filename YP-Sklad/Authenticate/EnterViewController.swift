@@ -207,13 +207,5 @@ extension EnterViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
     }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // Получаем текущий текст
-        if let currentText = textField.text, let textRange = Range(range, in: currentText) {
-            let updatedText = currentText.replacingCharacters(in: textRange, with: string)
-            print(updatedText)
-        }
-        return true
-    }
+
 }

@@ -13,6 +13,14 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
+    private lazy var backgroundImage: UIImageView = {
+       let image = UIImage(named: "BackgroundImage")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private lazy var cameraView: UIView = {
         let view = UIView()
         view.layer.masksToBounds = true
@@ -105,9 +113,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     private func setupUI() {
+        view.addSubview(backgroundImage)
         view.addSubview(cameraView)
         view.addSubview(addQRInfoButton)
         NSLayoutConstraint.activate([
+            backgroundImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            backgroundImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
             cameraView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150),
             cameraView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150),
             cameraView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
