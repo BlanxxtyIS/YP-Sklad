@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import FirebaseNo
 
 class NewProductViewController: UIViewController {
     
     // MARK: - Public Properties
     // MARK: - Private Properties
     private lazy var backgroundImage: UIImageView = {
-       let image = UIImage(named: "BackgroundImage")
+        let image = UIImage(named: "BackgroundImage")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -20,7 +21,7 @@ class NewProductViewController: UIViewController {
     }()
     
     private lazy var backgroundView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = .white
         view.layer.borderColor = UIColor.black.cgColor
         view.layer.masksToBounds = false
@@ -66,7 +67,7 @@ class NewProductViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-        
+    
     private lazy var productSizeX: UITextField = {
         let search = UITextField()
         search.placeholder = "размер X"
@@ -113,7 +114,7 @@ class NewProductViewController: UIViewController {
     }()
     
     private lazy var sizeStackView: UIStackView = {
-       let stack = UIStackView(arrangedSubviews: [productSizeX, productSizeY, productSizeZ])
+        let stack = UIStackView(arrangedSubviews: [productSizeX, productSizeY, productSizeZ])
         stack.axis = .horizontal
         stack.alignment = .fill
         stack.distribution = .fillEqually
@@ -146,7 +147,7 @@ class NewProductViewController: UIViewController {
         search.translatesAutoresizingMaskIntoConstraints = false
         return search
     }()
-
+    
     //Количество
     private lazy var productCount: UILabel = {
         let label = UILabel()
@@ -188,7 +189,7 @@ class NewProductViewController: UIViewController {
     }()
     
     private lazy var productCountAndPrice: UIStackView = {
-       let stack = UIStackView(arrangedSubviews: [productCountCreate, productPriceCreate])
+        let stack = UIStackView(arrangedSubviews: [productCountCreate, productPriceCreate])
         stack.axis = .horizontal
         stack.alignment = .fill
         stack.distribution = .fillEqually
@@ -246,8 +247,81 @@ class NewProductViewController: UIViewController {
         return search
     }()
     
+    private lazy var productQR: UILabel = {
+        let label = UILabel()
+        label.text = "QR-КОД И ТИП ТОВАРА:"
+        label.font = .systemFont(ofSize: 10, weight: .bold)
+        label.textColor = .kDarkBlue
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var productQRCreate: UITextField = {
+        let search = UITextField()
+        search.placeholder = "QR-Код товара"
+        search.layer.borderWidth = 1.0
+        search.layer.borderColor = UIColor.systemGray.cgColor
+        search.layer.cornerRadius = 5.0
+        search.delegate = self
+        // Создаем UIView для левого отступа
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: search.frame.height))
+        search.leftView = paddingView
+        search.leftViewMode = .always  // Показывать отступ всегда
+        search.translatesAutoresizingMaskIntoConstraints = false
+        return search
+    }()
+    
+    private lazy var productTypeCreate: UITextField = {
+        let search = UITextField()
+        search.placeholder = "Тип товара"
+        search.layer.borderWidth = 1.0
+        search.layer.borderColor = UIColor.systemGray.cgColor
+        search.layer.cornerRadius = 5.0
+        search.delegate = self
+        // Создаем UIView для левого отступа
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: search.frame.height))
+        search.leftView = paddingView
+        search.leftViewMode = .always  // Показывать отступ всегда
+        search.translatesAutoresizingMaskIntoConstraints = false
+        return search
+    }()
+    
+    private lazy var productQRAndType: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [productQRCreate, productTypeCreate])
+        stack.axis = .horizontal
+        stack.alignment = .fill
+        stack.distribution = .fillEqually
+        stack.spacing = 10
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    private lazy var productImage: UILabel = {
+        let label = UILabel()
+        label.text = "КАРТИНКА:"
+        label.font = .systemFont(ofSize: 10, weight: .bold)
+        label.textColor = .kDarkBlue
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var productImageCreate: UITextField = {
+        let search = UITextField()
+        search.placeholder = "Изображение товара"
+        search.layer.borderWidth = 1.0
+        search.layer.borderColor = UIColor.systemGray.cgColor
+        search.layer.cornerRadius = 5.0
+        search.delegate = self
+        // Создаем UIView для левого отступа
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: search.frame.height))
+        search.leftView = paddingView
+        search.leftViewMode = .always  // Показывать отступ всегда
+        search.translatesAutoresizingMaskIntoConstraints = false
+        return search
+    }()
+    
     private lazy var saveProductButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.addTarget(self, action: #selector(saveProductButtonTapped), for: .touchUpInside)
         button.setTitle("Сохранить", for: .normal)
         button.backgroundColor = .kDarkBlue
@@ -258,28 +332,45 @@ class NewProductViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
+    
+    
     // MARK: - Initilaized
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.systemBackground
         title = "Новый товар"
-        print("ПОЛЬЗОВАТЕЛИ:")
         setupUI()
     }
     
     // MARK: - Public Methods
     
     // MARK: - Private Methods
+    //MARK: - настроить хранение
     @objc
     private func saveProductButtonTapped() {
-        print("Сохранить")
+        if let name = productNameCreate.text,
+           let sizeX = productSizeX.text,
+           let sizeY = productSizeY.text,
+           let sizeZ = productSizeZ.text,
+           let weight = productWeightCreate.text,
+           let count = productCountCreate.text,
+           let price = productPriceCreate.text,
+           let stack = productScladingCreate.text,
+           let counterparty = productKontragent.text,
+           let qr = productQR.text,
+           let image = UIImage(named: "\(productImageCreate.text)"),
+           let type = productTypeCreate.text
+        {
+            let product = ProductModel(name: name, sizeX: 0.0, sizeY: 0.0, sizeZ: 0.0, weigth: 0.0, count: 0, price: 0.0, stack: false, counterparty: counterparty, qrCode: qr, image: image, type: type)
+
+            view.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        }
     }
     
     private func setupUI() {
         view.addSubview(backgroundImage)
         view.addSubview(backgroundView)
-        let allViews = [productName, productNameCreate, productSize, sizeStackView, productWeight, productWeightCreate, productCount, productCountAndPrice, productSclading, productScladingCreate, productKontragent, productKontagentCreate, saveProductButton]
+        let allViews = [productName, productNameCreate, productSize, sizeStackView, productWeight, productWeightCreate, productCount, productCountAndPrice, productSclading, productScladingCreate, productKontragent, productKontagentCreate, productQR, productQRCreate, saveProductButton, productImage, productTypeCreate, productImageCreate]
         
         allViews.forEach { view in
             backgroundView.addSubview(view)
@@ -292,7 +383,7 @@ class NewProductViewController: UIViewController {
             backgroundView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            backgroundView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
+            backgroundView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.7),
             
             productName.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 10),
             productName.bottomAnchor.constraint(equalTo: productNameCreate.topAnchor),
@@ -346,8 +437,24 @@ class NewProductViewController: UIViewController {
             productKontagentCreate.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
             productKontagentCreate.heightAnchor.constraint(equalToConstant: 44),
             
+            productQRAndType.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            productQRAndType.topAnchor.constraint(equalTo: productKontagentCreate.bottomAnchor, constant: 10),
+            
+            productQRCreate.topAnchor.constraint(equalTo: productQR.bottomAnchor),
+            productQRCreate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            productQRCreate.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            productQRCreate.heightAnchor.constraint(equalToConstant: 44),
+            
+            productImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            productImage.topAnchor.constraint(equalTo: productQRCreate.bottomAnchor, constant: 10),
+            
+            productImageCreate.topAnchor.constraint(equalTo: productImage.bottomAnchor),
+            productImageCreate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            productImageCreate.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            productImageCreate.heightAnchor.constraint(equalToConstant: 44),
+            
             saveProductButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            saveProductButton.topAnchor.constraint(equalTo: productKontagentCreate.bottomAnchor, constant: 20)
+            saveProductButton.topAnchor.constraint(equalTo: productImageCreate.bottomAnchor, constant: 10)
         ])
     }
 }

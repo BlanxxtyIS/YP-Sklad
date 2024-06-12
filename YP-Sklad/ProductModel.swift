@@ -5,7 +5,7 @@
 //  Created by Марат Хасанов on 11.06.2024.
 //
 
-import Foundation
+import UIKit
 
 struct ProductModel {
     let name: String
@@ -14,4 +14,7 @@ struct ProductModel {
     let count: Int, price: Double
     let stack: Bool
     let counterparty: String
+    let qrCode: String
+    let image: UIImage?
+    let type: String
 }

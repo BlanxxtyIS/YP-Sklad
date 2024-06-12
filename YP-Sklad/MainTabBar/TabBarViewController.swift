@@ -26,6 +26,10 @@ class TabBarViewController: UITabBarController {
     private func createNewViewController(for rootViewController: UIViewController, title: String, imageName: String) -> UIViewController {
         let navController = UINavigationController(rootViewController: rootViewController)
         navController.tabBarItem = UITabBarItem(title: title, image: UIImage(named: imageName), tag: 0)
+        var attrs = navController.navigationBar.titleTextAttributes ?? [:]
+        attrs[.font] = UIFont.systemFont(ofSize: 20, weight: .bold)
+        attrs[.foregroundColor] = UIColor.kUltraDarkBlue
+        navController.navigationBar.titleTextAttributes = attrs
         return navController
     }
 }

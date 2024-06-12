@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseMe
 
 class WelcomeViewController: UIViewController {
     
