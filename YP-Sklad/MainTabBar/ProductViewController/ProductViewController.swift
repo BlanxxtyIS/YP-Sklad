@@ -11,19 +11,26 @@ import FirebaseAuth
 class ProductViewController: UIViewController {
     
     let productCell = [
-    ProductModel(name: "Двигатель BMW", sizeX: 10, sizeY: 10, sizeZ: 10, weigth: 100, count: 1, price: 100, stack: false, counterparty: "ООО BMW", qrCode: "QR CODE", image: UIImage(named: "Двигатель"), type: "Двигатели"),
-    ProductModel(name: "Двигатель AUDI", sizeX: 10, sizeY: 10, sizeZ: 10, weigth: 100, count: 1, price: 100, stack: false, counterparty: "ООО Audi", qrCode: "QR CODE", image: UIImage(named: "Двигатель1"), type: "Двигатели"),
-    ProductModel(name: "Диск 16R", sizeX: 10, sizeY: 10, sizeZ: 10, weigth: 100, count: 1, price: 100, stack: false, counterparty: "ООО Тапки", qrCode: "QR CODE", image: UIImage(named: "Диск"), type: "Диски"),
-    ProductModel(name: "Диск 18R", sizeX: 10, sizeY: 10, sizeZ: 10, weigth: 100, count: 1, price: 100, stack: false, counterparty: "ООО Тапки", qrCode: "QR CODE", image: UIImage(named: "Диск1"), type: "Диски"),
-    ProductModel(name: "Масло", sizeX: 10, sizeY: 10, sizeZ: 10, weigth: 100, count: 1, price: 100, stack: false, counterparty: "ООО Поставщик", qrCode: "QR CODE", image: UIImage(named: "масло"), type: "Расходники"),
-    ProductModel(name: "Поршни", sizeX: 10, sizeY: 10, sizeZ: 10, weigth: 100, count: 1, price: 100, stack: false, counterparty: "ООО Поставщик", qrCode: "QR CODE", image: UIImage(named: "Поршни"), type: "Детали"),
-    ProductModel(name: "Пружины", sizeX: 10, sizeY: 10, sizeZ: 10, weigth: 100, count: 1, price: 100, stack: false, counterparty: "ООО Поставщик", qrCode: "QR CODE", image: UIImage(named: "Пружины"), type: "Расходники"),
+        ProductModel(id: UUID(), name: "Двигатель BMW", sizeX: "10", sizeY: "10", sizeZ: "10", weigth: "100", count: "1", price: "100", stack: "Нет", counterparty: "ООО BMW", image: UIImage(named: "Двигатель"), type: "Двигатели"),
+    ProductModel(id: UUID(), name: "Двигатель AUDI", sizeX: "10", sizeY: "10", sizeZ: "10", weigth: "100", count: "1", price: "100", stack: "Нет", counterparty: "ООО Audi", image: UIImage(named: "Двигатель1"), type: "Двигатели"),
+    ProductModel(id: UUID(), name: "Диск 16R", sizeX: "10", sizeY: "10", sizeZ: "10", weigth: "100", count: "1", price: "100", stack: "Да", counterparty: "ООО Тапки", image: UIImage(named: "Диск"), type: "Диски"),
+    ProductModel(id: UUID(), name: "Диск 18R", sizeX: "10", sizeY: "10", sizeZ: "10", weigth: "100", count: "1", price: "100", stack: "Да", counterparty: "ООО Тапки", image: UIImage(named: "Диск1"), type: "Диски"),
+    ProductModel(id: UUID(), name: "Масло", sizeX: "10", sizeY: "10", sizeZ: "10", weigth: "100", count: "1", price: "100", stack: "Да", counterparty: "ООО Поставщик", image: UIImage(named: "масло"), type: "Расходники"),
+    ProductModel(id: UUID(), name: "Поршни", sizeX: "10", sizeY: "10", sizeZ: "10", weigth: "100", count: "1", price: "100", stack: "Да", counterparty: "ООО Поставщик", image: UIImage(named: "Поршни"), type: "Детали"),
+    ProductModel(id: UUID(), name: "Пружины", sizeX: "10", sizeY: "10", sizeZ: "10", weigth: "100", count: "1", price: "100", stack: "Да", counterparty: "ООО Поставщик", image: UIImage(named: "Пружины"), type: "Расходники"),
+    ProductModel(id: UUID(), name: "Двигатель BMW", sizeX: "10", sizeY: "10", sizeZ: "10", weigth: "100", count: "1", price: "100", stack: "Нет", counterparty: "ООО BMW", image: UIImage(named: "Двигатель"), type: "Двигатели"),
+    ProductModel(id: UUID(), name: "Двигатель AUDI", sizeX: "10", sizeY: "10", sizeZ: "10", weigth: "100", count: "1", price: "100", stack: "Нет", counterparty: "ООО Audi", image: UIImage(named: "Двигатель1"), type: "Двигатели"),
+    ProductModel(id: UUID(), name: "Диск 16R", sizeX: "10", sizeY: "10", sizeZ: "10", weigth: "100", count: "1", price: "100", stack: "Да", counterparty: "ООО Тапки", image: UIImage(named: "Диск"), type: "Диски"),
+    ProductModel(id: UUID(), name: "Диск 18R", sizeX: "10", sizeY: "10", sizeZ: "10", weigth: "100", count: "1", price: "100", stack: "Да", counterparty: "ООО Тапки", image: UIImage(named: "Диск1"), type: "Диски"),
+    ProductModel(id: UUID(), name: "Масло", sizeX: "10", sizeY: "10", sizeZ: "10", weigth: "100", count: "1", price: "100", stack: "Да", counterparty: "ООО Поставщик", image: UIImage(named: "масло"), type: "Расходники"),
+    ProductModel(id: UUID(), name: "Поршни", sizeX: "10", sizeY: "10", sizeZ: "10", weigth: "100", count: "1", price: "100", stack: "Да", counterparty: "ООО Поставщик", image: UIImage(named: "Поршни"), type: "Детали"),
+    ProductModel(id: UUID(), name: "Пружины", sizeX: "10", sizeY: "10", sizeZ: "10", weigth: "100", count: "1", price: "100", stack: "Да", counterparty: "ООО Поставщик", image: UIImage(named: "Пружины"), type: "Расходники")
     ]
     
     private lazy var backgroundImage: UIImageView = {
        let image = UIImage(named: "BackgroundImage")
         let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -31,10 +38,11 @@ class ProductViewController: UIViewController {
     private lazy var productTableView: UITableView = {
         let table = UITableView()
         table.register(ProductTableViewCell.self, forCellReuseIdentifier: ProductTableViewCell.reuseIdentifier)
-        table.backgroundColor = UIColor(white: 1, alpha: 0.3)
+        table.backgroundColor = UIColor.white
         table.layer.cornerRadius = 16
         table.delegate = self
         table.dataSource = self
+        table.backgroundColor = .clear
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
@@ -56,7 +64,8 @@ class ProductViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             backgroundImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backgroundImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
         
             productTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             productTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
@@ -101,6 +110,7 @@ extension ProductViewController: UITableViewDataSource {
                              integer: "кол-во: \(product.count)",
                              image: product.image ?? UIImage(named: "007-thumbs up")!,
                              groupType: product.type)
+        cell.backgroundColor = .clear
         return cell
     }
 }

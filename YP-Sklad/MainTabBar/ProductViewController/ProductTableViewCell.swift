@@ -78,9 +78,11 @@ class ProductTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
+        self.backgroundColor = UIColor(white: 1, alpha: 0.5)
         contentView.backgroundColor = UIColor(white: 1, alpha: 0.5)
         let uiElements = [productImage, productGroupType, productName, productPrice, productInteger]
         uiElements.forEach { ui in
+            ui.backgroundColor = .clear
             contentView.addSubview(ui)
         }
         

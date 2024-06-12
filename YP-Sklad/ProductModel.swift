@@ -8,13 +8,13 @@
 import UIKit
 
 struct ProductModel {
+    let id: UUID
     let name: String
-    let sizeX: Double, sizeY: Double, sizeZ: Double
-    let weigth: Double
-    let count: Int, price: Double
-    let stack: Bool
+    let sizeX: String, sizeY: String, sizeZ: String
+    let weigth: String
+    let count: String, price: String
+    let stack: String
     let counterparty: String
-    let qrCode: String
     let image: UIImage?
     let type: String
 }

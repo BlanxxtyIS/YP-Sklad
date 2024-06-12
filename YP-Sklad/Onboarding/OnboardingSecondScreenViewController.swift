@@ -36,7 +36,7 @@ class OnboardingSecondScreenViewController: UIViewController {
     private func goToAppButtonTapped() {
         //сохраняем значение заходили ли мы в Onboarding
         let userDefaults = UserDefaults.standard
-        userDefaults.set(1, forKey: "onboardingView")
+        userDefaults.set(1, forKey: "onboardingView1")
         
         let nextViewController = TabBarViewController()
         nextViewController.modalPresentationStyle = .fullScreen

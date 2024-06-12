@@ -8,7 +8,15 @@
 import UIKit
 import AVFoundation
 
+protocol ScannerViewControllerDelegate: AnyObject {
+    func getQrData(product: ProductModel)
+}
+
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+    
+    weak var delegate: ScannerViewControllerDelegate?
+    let pattern = #"(?m)(?<=Наименование:\s")(.+)(?=")|(?<=Размер X:\s)(\d+)|(?<=Размер Y:\s)(\d+)|(?<=Размер Z:\s)(\d+)|(?<=Вес:\s)(\d+\sкг.)|(?<=Количество:\s)(\d+)|(?<=Цена:\s)(\d+\.\d+р)|(?<=Можно складировать:\s)(Да|Нет)|(?<=Поставщик:\s)(.+)|(?<=Тип товара:\s")(.+)(?=")"#
+    var input: String = ""
 
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
@@ -16,7 +24,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     private lazy var backgroundImage: UIImageView = {
        let image = UIImage(named: "BackgroundImage")
         let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -26,7 +34,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         view.layer.masksToBounds = true
         view.layer.cornerRadius = 20
         view.layer.borderColor = UIColor.black.cgColor
-        view.layer.borderWidth = 2
+        view.layer.borderWidth = 3
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -43,7 +51,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     // MARK: - Initialized
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.systemBackground
+        view.backgroundColor = UIColor.white
         title = "Сканер"
         setupCamera()
         setupUI()
@@ -117,8 +125,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         view.addSubview(cameraView)
         view.addSubview(addQRInfoButton)
         NSLayoutConstraint.activate([
+            backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backgroundImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            backgroundImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
             
             cameraView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150),
             cameraView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150),
@@ -191,8 +200,27 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     func found(code: String) {
+        input = code
         print("Найден QR код: \(code)")
+        let data = extractData(from: input, with: pattern)
+        let qrProduct = ProductModel(id: UUID(), name: data[0], sizeX: data[1], sizeY: data[2], sizeZ: data[3], weigth: data[4], count: data[5], price: data[6], stack: data[7], counterparty: data[8], image: UIImage(named: "Двигатель"), type: data[9])
+        delegate?.getQrData(product: qrProduct)
+        print(data)
+    }
+    
+    private func extractData(from text: String, with pattern: String) -> [String] {
+        let regex = try! NSRegularExpression(pattern: pattern, options: [])
+        let matches = regex.matches(in: text, options: [], range: NSRange(text.startIndex..., in: text))
         
+        return matches.compactMap { match -> String? in
+            for rangeIndex in 1..<match.numberOfRanges {
+                let range = match.range(at: rangeIndex)
+                if range.location != NSNotFound, let swiftRange = Range(range, in: text) {
+                    return String(text[swiftRange])
+                }
+            }
+            return nil
+        }
     }
     
     // Проверка разрешений на использование камеры

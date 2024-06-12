@@ -6,34 +6,47 @@
 //
 
 import UIKit
-import FirebaseNo
+import FirebaseAuth
+import FirebaseFirestore
+
+
 
 class NewProductViewController: UIViewController {
     
     // MARK: - Public Properties
     // MARK: - Private Properties
+    let scaner = ScannerViewController()
+    private let db = Firestore.firestore()
+    private var productImage = UIImage(named: "003-delivery")
+    
+    private lazy var successufulImage: UIImageView = {
+       let image = UIImage(named: "007-thumbs up")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleToFill
+        imageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        imageView.isHidden = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+        
+    }()
+    
     private lazy var backgroundImage: UIImageView = {
         let image = UIImage(named: "BackgroundImage")
         let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private lazy var backgroundView: UIView = {
+    private lazy var contentView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
-        view.layer.borderColor = UIColor.black.cgColor
-        view.layer.masksToBounds = false
+        view.backgroundColor = UIColor.white
         view.layer.cornerRadius = 16
-        // Настройка тени
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.5
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowRadius = 4
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
     private lazy var productName: UILabel = {
         let label = UILabel()
         label.text = "НАИМЕНОВАНИЕ:"
@@ -45,7 +58,9 @@ class NewProductViewController: UIViewController {
     
     private lazy var productNameCreate: UITextField = {
         let search = UITextField()
-        search.placeholder = "Введите наименование"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.kBlueShadow]
+        search.attributedPlaceholder = NSAttributedString(string: "Введите наименование", attributes: attributes)
+        search.textColor = .kDarkBlue
         search.layer.borderWidth = 1.0
         search.layer.borderColor = UIColor.systemGray.cgColor
         search.layer.cornerRadius = 5.0
@@ -70,7 +85,9 @@ class NewProductViewController: UIViewController {
     
     private lazy var productSizeX: UITextField = {
         let search = UITextField()
-        search.placeholder = "размер X"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.kBlueShadow]
+        search.attributedPlaceholder = NSAttributedString(string: "размер Х", attributes: attributes)
+        search.textColor = .kDarkBlue
         search.layer.borderWidth = 1.0
         search.layer.borderColor = UIColor.systemGray.cgColor
         search.layer.cornerRadius = 5.0
@@ -85,7 +102,9 @@ class NewProductViewController: UIViewController {
     
     private lazy var productSizeY: UITextField = {
         let search = UITextField()
-        search.placeholder = "размер Y"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.kBlueShadow]
+        search.attributedPlaceholder = NSAttributedString(string: "размер Y", attributes: attributes)
+        search.textColor = .kDarkBlue
         search.layer.borderWidth = 1.0
         search.layer.borderColor = UIColor.systemGray.cgColor
         search.layer.cornerRadius = 5.0
@@ -100,7 +119,9 @@ class NewProductViewController: UIViewController {
     
     private lazy var productSizeZ: UITextField = {
         let search = UITextField()
-        search.placeholder = "размер Z"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.kBlueShadow]
+        search.attributedPlaceholder = NSAttributedString(string: "размер Z", attributes: attributes)
+        search.textColor = .kDarkBlue
         search.layer.borderWidth = 1.0
         search.layer.borderColor = UIColor.systemGray.cgColor
         search.layer.cornerRadius = 5.0
@@ -135,7 +156,9 @@ class NewProductViewController: UIViewController {
     
     private lazy var productWeightCreate: UITextField = {
         let search = UITextField()
-        search.placeholder = "Введите вес"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.kBlueShadow]
+        search.attributedPlaceholder = NSAttributedString(string: "Введите вес", attributes: attributes)
+        search.textColor = .kDarkBlue
         search.layer.borderWidth = 1.0
         search.layer.borderColor = UIColor.systemGray.cgColor
         search.layer.cornerRadius = 5.0
@@ -160,7 +183,9 @@ class NewProductViewController: UIViewController {
     
     private lazy var productCountCreate: UITextField = {
         let search = UITextField()
-        search.placeholder = "Введите количество"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.kBlueShadow]
+        search.attributedPlaceholder = NSAttributedString(string: "Введите количество", attributes: attributes)
+        search.textColor = .kDarkBlue
         search.layer.borderWidth = 1.0
         search.layer.borderColor = UIColor.systemGray.cgColor
         search.layer.cornerRadius = 5.0
@@ -175,7 +200,9 @@ class NewProductViewController: UIViewController {
     
     private lazy var productPriceCreate: UITextField = {
         let search = UITextField()
-        search.placeholder = "Цена"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.kBlueShadow]
+        search.attributedPlaceholder = NSAttributedString(string: "Цена", attributes: attributes)
+        search.textColor = .kDarkBlue
         search.layer.borderWidth = 1.0
         search.layer.borderColor = UIColor.systemGray.cgColor
         search.layer.cornerRadius = 5.0
@@ -210,7 +237,9 @@ class NewProductViewController: UIViewController {
     
     private lazy var productScladingCreate: UITextField = {
         let search = UITextField()
-        search.placeholder = "Да/Нет"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.kBlueShadow]
+        search.attributedPlaceholder = NSAttributedString(string: "Да/Нет", attributes: attributes)
+        search.textColor = .kDarkBlue
         search.layer.borderWidth = 1.0
         search.layer.borderColor = UIColor.systemGray.cgColor
         search.layer.cornerRadius = 5.0
@@ -234,7 +263,9 @@ class NewProductViewController: UIViewController {
     
     private lazy var productKontagentCreate: UITextField = {
         let search = UITextField()
-        search.placeholder = "Наименование поставщика"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.kBlueShadow]
+        search.attributedPlaceholder = NSAttributedString(string: "Наименование поставщика", attributes: attributes)
+        search.textColor = .kDarkBlue
         search.layer.borderWidth = 1.0
         search.layer.borderColor = UIColor.systemGray.cgColor
         search.layer.cornerRadius = 5.0
@@ -256,24 +287,24 @@ class NewProductViewController: UIViewController {
         return label
     }()
     
-    private lazy var productQRCreate: UITextField = {
-        let search = UITextField()
-        search.placeholder = "QR-Код товара"
-        search.layer.borderWidth = 1.0
-        search.layer.borderColor = UIColor.systemGray.cgColor
-        search.layer.cornerRadius = 5.0
-        search.delegate = self
-        // Создаем UIView для левого отступа
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: search.frame.height))
-        search.leftView = paddingView
-        search.leftViewMode = .always  // Показывать отступ всегда
-        search.translatesAutoresizingMaskIntoConstraints = false
-        return search
+    private lazy var productQRCreate: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(addQrCode), for: .touchUpInside)
+        button.setTitle("QR-Код товара", for: .normal)
+        button.setTitleColor(.kDarkBlue, for: .normal)
+        button.layer.borderColor = UIColor.kDarkBlue.cgColor
+        button.layer.borderWidth = 1
+        button.titleLabel?.font = .systemFont(ofSize: 12, weight: .bold)
+        button.layer.cornerRadius = 5.0
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     private lazy var productTypeCreate: UITextField = {
         let search = UITextField()
-        search.placeholder = "Тип товара"
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.kBlueShadow]
+        search.attributedPlaceholder = NSAttributedString(string: "Тип товара", attributes: attributes)
+        search.textColor = .kDarkBlue
         search.layer.borderWidth = 1.0
         search.layer.borderColor = UIColor.systemGray.cgColor
         search.layer.cornerRadius = 5.0
@@ -296,28 +327,17 @@ class NewProductViewController: UIViewController {
         return stack
     }()
     
-    private lazy var productImage: UILabel = {
-        let label = UILabel()
-        label.text = "КАРТИНКА:"
-        label.font = .systemFont(ofSize: 10, weight: .bold)
-        label.textColor = .kDarkBlue
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private lazy var productImageCreate: UITextField = {
-        let search = UITextField()
-        search.placeholder = "Изображение товара"
-        search.layer.borderWidth = 1.0
-        search.layer.borderColor = UIColor.systemGray.cgColor
-        search.layer.cornerRadius = 5.0
-        search.delegate = self
-        // Создаем UIView для левого отступа
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: search.frame.height))
-        search.leftView = paddingView
-        search.leftViewMode = .always  // Показывать отступ всегда
-        search.translatesAutoresizingMaskIntoConstraints = false
-        return search
+    private lazy var productImageCreate: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(addProductImage), for: .touchUpInside)
+        button.setTitle("Изображение товара", for: .normal)
+        button.setTitleColor(.kDarkBlue, for: .normal)
+        button.layer.borderColor = UIColor.kDarkBlue.cgColor
+        button.layer.borderWidth = 1
+        button.titleLabel?.font = .systemFont(ofSize: 12, weight: .bold)
+        button.layer.cornerRadius = 5.0
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     private lazy var saveProductButton: UIButton = {
@@ -333,129 +353,192 @@ class NewProductViewController: UIViewController {
         return button
     }()
     
+    private lazy var productImageAndButtonStack: UIStackView = {
+       let stack = UIStackView(arrangedSubviews: [productImageCreate, saveProductButton])
+        stack.axis = .horizontal
+        stack.alignment = .fill
+        stack.distribution = .fillEqually
+        stack.spacing = 10
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
     
     // MARK: - Initilaized
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.systemBackground
+        view.backgroundColor = UIColor.white
         title = "Новый товар"
         setupUI()
+        scaner.delegate = self
+        //loadData()
     }
     
     // MARK: - Public Methods
     
     // MARK: - Private Methods
-    //MARK: - настроить хранение
+    @objc
+    private func addQrCode() {
+        navigationController?.pushViewController(scaner, animated: true)
+    }
+    
+    @objc
+    private func addProductImage() {
+        print("Добавивть изображение")
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.allowsEditing = false
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
     @objc
     private func saveProductButtonTapped() {
         if let name = productNameCreate.text,
-           let sizeX = productSizeX.text,
-           let sizeY = productSizeY.text,
-           let sizeZ = productSizeZ.text,
-           let weight = productWeightCreate.text,
-           let count = productCountCreate.text,
-           let price = productPriceCreate.text,
-           let stack = productScladingCreate.text,
-           let counterparty = productKontragent.text,
-           let qr = productQR.text,
-           let image = UIImage(named: "\(productImageCreate.text)"),
-           let type = productTypeCreate.text
-        {
-            let product = ProductModel(name: name, sizeX: 0.0, sizeY: 0.0, sizeZ: 0.0, weigth: 0.0, count: 0, price: 0.0, stack: false, counterparty: counterparty, qrCode: qr, image: image, type: type)
+           let sender = Auth.auth().currentUser?.email {
+            db.collection("infoBody").addDocument(data: [
+                "id": "UUID",
+                "sender": sender,
+                "date": Date().timeIntervalSince1970,
+                "name" : productNameCreate.text!,
+                "sizeX" : productSizeX.text!,
+                "sizeY" : productSizeY.text!,
+                "sizeZ" : productSizeZ.text!,
+                "weight" : productWeightCreate.text!,
+                "count" : productCountCreate.text!,
+                "price" : productPriceCreate.text!,
+                "stack" : productScladingCreate.text!,
+                "counterparty" : productKontagentCreate.text!,
+                "image" : "Картинка",
+                "type" : productTypeCreate.text!
+            ]) { error in
+                if let e = error {
+                    print("\(e) - Ошибка при сохранении в FireStore")
+                } else {
+                    print("Successfully! Данные сохранены")
+                    self.successufulImageView()
+                }
+            }
+        }
+    }
 
-            view.backgroundColor = UIColor(white: 1, alpha: 0.5)
+    //Достать из 'Firebase Cloud Firestore' данные
+    private func loadData() {
+        //var messages: [String] = []
+        db.collection("infoBody").order(by: "date").getDocuments { querySnapshot, error in
+            if let e = error {
+                print("\(e) Ошибка при загрузке данных")
+            } else {
+                if let data = querySnapshot?.documents {
+                    self.successufulImageView()
+                    data.forEach { document in
+                        let data = document.data()
+                        let sender = data["sender"] as? String
+                        let dataBody = data["info"] as? String
+                        let sizeX = data["sizeX"] as! String
+                        print("Отправитель: \(sender), сообщение: \(dataBody), размер \(sizeX)")
+                    }
+                }
+            }
         }
     }
     
     private func setupUI() {
         view.addSubview(backgroundImage)
-        view.addSubview(backgroundView)
-        let allViews = [productName, productNameCreate, productSize, sizeStackView, productWeight, productWeightCreate, productCount, productCountAndPrice, productSclading, productScladingCreate, productKontragent, productKontagentCreate, productQR, productQRCreate, saveProductButton, productImage, productTypeCreate, productImageCreate]
+        view.addSubview(contentView)
+    
+        let allViews = [
+            productName, productNameCreate, productSize, sizeStackView, productWeight, productWeightCreate,
+            productCount, productCountAndPrice, productSclading, productScladingCreate, productKontragent,
+            productKontagentCreate, productQR, productQRAndType, productImageAndButtonStack, successufulImage
+        ]
         
         allViews.forEach { view in
-            backgroundView.addSubview(view)
+            contentView.addSubview(view)
         }
         
         NSLayoutConstraint.activate([
+            backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backgroundImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            backgroundImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
             
-            backgroundView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            backgroundView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.7),
+            contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             
-            productName.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 10),
-            productName.bottomAnchor.constraint(equalTo: productNameCreate.topAnchor),
-            productName.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 25),
+            productName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+            productName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            productName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             
-            productNameCreate.topAnchor.constraint(equalTo: productName.bottomAnchor, constant: -10),
-            productNameCreate.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 25),
-            productNameCreate.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            productNameCreate.topAnchor.constraint(equalTo: productName.bottomAnchor, constant: 8),
+            productNameCreate.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            productNameCreate.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             productNameCreate.heightAnchor.constraint(equalToConstant: 44),
             
-            productSize.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            productSize.topAnchor.constraint(equalTo: productNameCreate.bottomAnchor, constant: 10),
+            productSize.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            productSize.topAnchor.constraint(equalTo: productNameCreate.bottomAnchor, constant: 12),
             
-            sizeStackView.topAnchor.constraint(equalTo: productSize.bottomAnchor),
-            sizeStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            sizeStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            sizeStackView.topAnchor.constraint(equalTo: productSize.bottomAnchor, constant: 8),
+            sizeStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            sizeStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             sizeStackView.heightAnchor.constraint(equalToConstant: 44),
             
-            productWeight.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            productWeight.topAnchor.constraint(equalTo: sizeStackView.bottomAnchor, constant: 10),
+            productWeight.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            productWeight.topAnchor.constraint(equalTo: sizeStackView.bottomAnchor, constant: 12),
             
-            productWeightCreate.topAnchor.constraint(equalTo: productWeight.bottomAnchor),
-            productWeightCreate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            productWeightCreate.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            productWeightCreate.topAnchor.constraint(equalTo: productWeight.bottomAnchor, constant: 8),
+            productWeightCreate.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            productWeightCreate.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             productWeightCreate.heightAnchor.constraint(equalToConstant: 44),
             
-            productCount.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            productCount.topAnchor.constraint(equalTo: productWeightCreate.bottomAnchor, constant: 10),
+            productCount.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            productCount.topAnchor.constraint(equalTo: productWeightCreate.bottomAnchor, constant: 12),
             
-            productCountAndPrice.topAnchor.constraint(equalTo: productCount.bottomAnchor),
-            productCountAndPrice.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            productCountAndPrice.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            productCountAndPrice.topAnchor.constraint(equalTo: productCount.bottomAnchor, constant: 8),
+            productCountAndPrice.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            productCountAndPrice.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             productCountAndPrice.heightAnchor.constraint(equalToConstant: 44),
             
-            productCountCreate.widthAnchor.constraint(equalTo: productCountAndPrice.widthAnchor, multiplier: 0.7),
-            productPriceCreate.widthAnchor.constraint(equalTo: productCountAndPrice.widthAnchor, multiplier: 0.2),
+            productSclading.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            productSclading.topAnchor.constraint(equalTo: productCountAndPrice.bottomAnchor, constant: 12),
             
-            productSclading.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            productSclading.topAnchor.constraint(equalTo: productCountAndPrice.bottomAnchor, constant: 10),
-            
-            productScladingCreate.topAnchor.constraint(equalTo: productSclading.bottomAnchor),
-            productScladingCreate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            productScladingCreate.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            productScladingCreate.topAnchor.constraint(equalTo: productSclading.bottomAnchor, constant: 8),
+            productScladingCreate.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            productScladingCreate.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             productScladingCreate.heightAnchor.constraint(equalToConstant: 44),
             
-            productKontragent.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            productKontragent.topAnchor.constraint(equalTo: productScladingCreate.bottomAnchor, constant: 10),
+            productKontragent.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            productKontragent.topAnchor.constraint(equalTo: productScladingCreate.bottomAnchor, constant: 12),
             
-            productKontagentCreate.topAnchor.constraint(equalTo: productKontragent.bottomAnchor),
-            productKontagentCreate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            productKontagentCreate.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            productKontagentCreate.topAnchor.constraint(equalTo: productKontragent.bottomAnchor, constant: 8),
+            productKontagentCreate.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            productKontagentCreate.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             productKontagentCreate.heightAnchor.constraint(equalToConstant: 44),
             
-            productQRAndType.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            productQRAndType.topAnchor.constraint(equalTo: productKontagentCreate.bottomAnchor, constant: 10),
+            productQR.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            productQR.topAnchor.constraint(equalTo: productKontagentCreate.bottomAnchor, constant: 12),
             
-            productQRCreate.topAnchor.constraint(equalTo: productQR.bottomAnchor),
-            productQRCreate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            productQRCreate.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
-            productQRCreate.heightAnchor.constraint(equalToConstant: 44),
+            productQRAndType.topAnchor.constraint(equalTo: productQR.bottomAnchor, constant: 8),
+            productQRAndType.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            productQRAndType.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
+            productQRAndType.heightAnchor.constraint(equalToConstant: 44),
+                        
+            productImageAndButtonStack.topAnchor.constraint(equalTo: productQRAndType.bottomAnchor, constant: 20),
+            productImageAndButtonStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            productImageAndButtonStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
+            productImageAndButtonStack.heightAnchor.constraint(equalToConstant: 50),
             
-            productImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            productImage.topAnchor.constraint(equalTo: productQRCreate.bottomAnchor, constant: 10),
-            
-            productImageCreate.topAnchor.constraint(equalTo: productImage.bottomAnchor),
-            productImageCreate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            productImageCreate.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
-            productImageCreate.heightAnchor.constraint(equalToConstant: 44),
-            
-            saveProductButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            saveProductButton.topAnchor.constraint(equalTo: productImageCreate.bottomAnchor, constant: 10)
+            successufulImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            successufulImage.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+    }
+    
+    private func successufulImageView() {
+        successufulImage.isHidden = false
+        DispatchQueue.main.async {
+            sleep(2)
+            self.successufulImage.isHidden = true
+        }
     }
 }
 
@@ -471,15 +554,39 @@ extension NewProductViewController: UITextFieldDelegate {
         if let currentText = textField.text, let textRange = Range(range, in: currentText) {
             let updatedText = currentText.replacingCharacters(in: textRange, with: string)
             
-            switch textField {
-            case productNameCreate:
-                print("хай")
-            case productSizeX:
-                print("хой")
-            default:
-                print("хуй")
-            }
+//            switch textField {
+//            case productNameCreate:
+//                print("тест")
+//            case productSizeX:
+//                print("тест2")
+//            default:
+//                print("тест3")
+//            }
         }
         return true
+    }
+}
+
+extension NewProductViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        
+        if let selectedImage = info[.originalImage] as? UIImage {
+            productImage = selectedImage
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+}
+
+extension NewProductViewController: ScannerViewControllerDelegate {
+    func getQrData(product: ProductModel) {
+        print(product)
+        productNameCreate.text = product.name
+        productSizeX.text = product.sizeX
+        productSizeY.text = product.sizeY
+        productSizeZ.text = product.sizeZ
     }
 }

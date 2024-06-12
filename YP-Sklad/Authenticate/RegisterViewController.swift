@@ -13,7 +13,7 @@ class RegisterViewController: UIViewController {
     private lazy var backgroundImage: UIImageView = {
        let image = UIImage(named: "BackgroundImage")
         let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -45,6 +45,7 @@ class RegisterViewController: UIViewController {
     private lazy var titleLogin: UILabel = {
        let label = UILabel()
         label.text = "REGISTRATION"
+        label.textColor = .kUltraDarkBlue
         label.font = .systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -61,6 +62,10 @@ class RegisterViewController: UIViewController {
     
     private lazy var emailTextField: UITextField = {
         let email = UITextField()
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.kBlueShadow
+        ]
+        email.attributedPlaceholder = NSAttributedString(string: "Адрес электронной почты", attributes: attributes)
         email.placeholder = "Адрес электронной почты"
         email.backgroundColor = .kBlueShadow
         email.layer.cornerRadius = 8
@@ -85,7 +90,10 @@ class RegisterViewController: UIViewController {
 
     private lazy var passwordTextField: UITextField = {
         let password = UITextField()
-        password.placeholder = "Пароль"
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.kBlueShadow
+        ]
+        password.attributedPlaceholder = NSAttributedString(string: "Пароль", attributes: attributes)
         password.backgroundColor = .kBlueShadow
         password.layer.cornerRadius = 8
         password.delegate = self
@@ -134,6 +142,14 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    //Клавиатура скрывалась при нажатии на другую часть экрана
+    @objc
+    private func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @objc
@@ -187,11 +203,11 @@ class RegisterViewController: UIViewController {
             titleLogin.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLogin.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 10),
             
-            stackView.topAnchor.constraint(equalTo: titleLogin.bottomAnchor, constant: 15),
+            stackView.topAnchor.constraint(equalTo: titleLogin.bottomAnchor, constant: 10),
             stackView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
             stackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -20),
-            stackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -60),
+            stackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -80),
             
             enterButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             enterButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
@@ -205,6 +221,7 @@ class RegisterViewController: UIViewController {
 
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
 }

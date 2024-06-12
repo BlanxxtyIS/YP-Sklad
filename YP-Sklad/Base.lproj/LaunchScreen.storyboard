@@ -16,8 +16,69 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="j2p-Ya-urR">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="428"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="428" id="1yM-rq-UcY"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="037-ecommerce" translatesAutoresizingMaskIntoConstraints="NO" id="4Bp-hr-FO9">
+                                <rect key="frame" x="16" y="436" width="164" height="120"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="016-monitor" translatesAutoresizingMaskIntoConstraints="NO" id="FTl-Yn-59q">
+                                <rect key="frame" x="213" y="436" width="164" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="164" id="eNg-Ac-rxp"/>
+                                    <constraint firstAttribute="height" constant="120" id="jdv-16-ghD"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="038-online shopping" translatesAutoresizingMaskIntoConstraints="NO" id="eVW-gx-wGj">
+                                <rect key="frame" x="114" y="564" width="165" height="120"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="004-ecommerce" translatesAutoresizingMaskIntoConstraints="NO" id="Hp8-hg-zSI">
+                                <rect key="frame" x="16" y="698" width="164" height="120"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="002-calendar" translatesAutoresizingMaskIntoConstraints="NO" id="9q9-WJ-7y3">
+                                <rect key="frame" x="213" y="698" width="164" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="aq9-Z0-Oer"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👷🏻Мой Склад👷🏻" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="G1z-qs-6ta">
+                                <rect key="frame" x="23" y="339" width="347" height="59"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9q9-WJ-7y3" firstAttribute="bottom" secondItem="Hp8-hg-zSI" secondAttribute="bottom" id="3Zs-ec-LzU"/>
+                            <constraint firstItem="FTl-Yn-59q" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="52S-uI-hgB"/>
+                            <constraint firstItem="FTl-Yn-59q" firstAttribute="leading" secondItem="9q9-WJ-7y3" secondAttribute="leading" id="78T-rS-ox9"/>
+                            <constraint firstItem="j2p-Ya-urR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7bj-SD-xOV"/>
+                            <constraint firstItem="G1z-qs-6ta" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="280" id="7eK-9Q-0A0"/>
+                            <constraint firstItem="4Bp-hr-FO9" firstAttribute="top" secondItem="j2p-Ya-urR" secondAttribute="bottom" constant="8" symbolic="YES" id="8mW-Es-Fb0"/>
+                            <constraint firstItem="j2p-Ya-urR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="A0K-vC-5H7"/>
+                            <constraint firstItem="eVW-gx-wGj" firstAttribute="top" secondItem="FTl-Yn-59q" secondAttribute="bottom" constant="8" symbolic="YES" id="D0z-dg-a1R"/>
+                            <constraint firstItem="eVW-gx-wGj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="114" id="Es9-XF-J9z"/>
+                            <constraint firstItem="4Bp-hr-FO9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Heu-Dv-jTC"/>
+                            <constraint firstItem="eVW-gx-wGj" firstAttribute="top" secondItem="4Bp-hr-FO9" secondAttribute="bottom" constant="8" symbolic="YES" id="JDa-eA-q8p"/>
+                            <constraint firstItem="FTl-Yn-59q" firstAttribute="trailing" secondItem="9q9-WJ-7y3" secondAttribute="trailing" id="NtF-e9-TKE"/>
+                            <constraint firstItem="FTl-Yn-59q" firstAttribute="leading" secondItem="4Bp-hr-FO9" secondAttribute="trailing" constant="33" id="PwE-pX-JC3"/>
+                            <constraint firstItem="9q9-WJ-7y3" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="QLL-Ak-Ih1"/>
+                            <constraint firstItem="9q9-WJ-7y3" firstAttribute="top" secondItem="Hp8-hg-zSI" secondAttribute="top" id="QSs-C4-ejg"/>
+                            <constraint firstItem="G1z-qs-6ta" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="23" id="SZh-6l-X8F"/>
+                            <constraint firstItem="4Bp-hr-FO9" firstAttribute="top" secondItem="G1z-qs-6ta" secondAttribute="bottom" constant="38" id="SkF-7I-cTy"/>
+                            <constraint firstItem="eVW-gx-wGj" firstAttribute="centerX" secondItem="j2p-Ya-urR" secondAttribute="centerX" id="fYE-a6-Bq8"/>
+                            <constraint firstItem="j2p-Ya-urR" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="g0Q-AS-qez"/>
+                            <constraint firstItem="FTl-Yn-59q" firstAttribute="top" secondItem="4Bp-hr-FO9" secondAttribute="top" id="hgO-Qq-v7A"/>
+                            <constraint firstItem="9q9-WJ-7y3" firstAttribute="leading" secondItem="Hp8-hg-zSI" secondAttribute="trailing" constant="33" id="sLG-rq-Osb"/>
+                            <constraint firstItem="eVW-gx-wGj" firstAttribute="centerX" secondItem="G1z-qs-6ta" secondAttribute="centerX" id="t75-oU-T0r"/>
+                            <constraint firstItem="9q9-WJ-7y3" firstAttribute="top" secondItem="eVW-gx-wGj" secondAttribute="bottom" constant="14" id="xx0-mD-LYf"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -26,6 +87,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="002-calendar" width="512" height="512"/>
+        <image name="004-ecommerce" width="512" height="512"/>
+        <image name="016-monitor" width="512" height="512"/>
+        <image name="037-ecommerce" width="512" height="512"/>
+        <image name="038-online shopping" width="512" height="512"/>
+        <image name="BackgroundImage" width="3000" height="2000"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

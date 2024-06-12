@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		08320073E9E822D3D4D763A1 /* Pods_YP_Sklad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0F55CDB47F8956D4BF725C /* Pods_YP_Sklad.framework */; };
 		F47302F42C1724D300B0C027 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47302F32C1724D300B0C027 /* RegisterViewController.swift */; };
-		F47302F82C172BA500B0C027 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F47302F72C172BA500B0C027 /* GoogleService-Info.plist */; };
 		F47302FA2C172EA700B0C027 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47302F92C172EA700B0C027 /* WelcomeViewController.swift */; };
 		F47302FC2C1732F300B0C027 /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47302FB2C1732F300B0C027 /* EnterViewController.swift */; };
 		F47302FF2C181EA700B0C027 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47302FE2C181EA700B0C027 /* ProductTableViewCell.swift */; };
 		F47303012C18207E00B0C027 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47303002C18207E00B0C027 /* ProductModel.swift */; };
+		F4C16CA22C19A20D0090F42F /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4C16CA12C19A20D0090F42F /* IQKeyboardManagerSwift */; };
 		F4E89B012C16CAB1000044CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B002C16CAB1000044CA /* AppDelegate.swift */; };
 		F4E89B032C16CAB1000044CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B022C16CAB1000044CA /* SceneDelegate.swift */; };
 		F4E89B052C16CAB1000044CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B042C16CAB1000044CA /* ViewController.swift */; };
@@ -28,6 +28,7 @@
 		F4E89B222C16DCF0000044CA /* OnboardingFirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B212C16DCF0000044CA /* OnboardingFirstScreenViewController.swift */; };
 		F4E89B242C16DCFC000044CA /* OnboardingSecondScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B232C16DCFC000044CA /* OnboardingSecondScreenViewController.swift */; };
 		F4E89B262C16E0AF000044CA /* OnboardingThreeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B252C16E0AF000044CA /* OnboardingThreeScreenViewController.swift */; };
+		F4F40EE52C1988BE00F8F41B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4F40EE42C1988BE00F8F41B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +36,6 @@
 		5B1AB04D03DDCBDE7E761061 /* Pods-YP-Sklad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YP-Sklad.debug.xcconfig"; path = "Target Support Files/Pods-YP-Sklad/Pods-YP-Sklad.debug.xcconfig"; sourceTree = "<group>"; };
 		DC0F55CDB47F8956D4BF725C /* Pods_YP_Sklad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YP_Sklad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47302F32C1724D300B0C027 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		F47302F72C172BA500B0C027 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F47302F92C172EA700B0C027 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		F47302FB2C1732F300B0C027 /* EnterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterViewController.swift; sourceTree = "<group>"; };
 		F47302FE2C181EA700B0C027 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
@@ -56,6 +56,7 @@
 		F4E89B212C16DCF0000044CA /* OnboardingFirstScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirstScreenViewController.swift; sourceTree = "<group>"; };
 		F4E89B232C16DCFC000044CA /* OnboardingSecondScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondScreenViewController.swift; sourceTree = "<group>"; };
 		F4E89B252C16E0AF000044CA /* OnboardingThreeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThreeScreenViewController.swift; sourceTree = "<group>"; };
+		F4F40EE42C1988BE00F8F41B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +65,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08320073E9E822D3D4D763A1 /* Pods_YP_Sklad.framework in Frameworks */,
+				F4C16CA22C19A20D0090F42F /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +148,7 @@
 				F4E89B0B2C16CAB3000044CA /* LaunchScreen.storyboard */,
 				F47303002C18207E00B0C027 /* ProductModel.swift */,
 				F4E89B0E2C16CAB3000044CA /* Info.plist */,
-				F47302F72C172BA500B0C027 /* GoogleService-Info.plist */,
+				F4F40EE42C1988BE00F8F41B /* GoogleService-Info.plist */,
 				F4E89B202C16DCCD000044CA /* Onboarding */,
 				F47302F22C17249D00B0C027 /* Authenticate */,
 				F47302F12C17248200B0C027 /* MainTabBar */,
@@ -183,6 +185,9 @@
 			dependencies = (
 			);
 			name = "YP-Sklad";
+			packageProductDependencies = (
+				F4C16CA12C19A20D0090F42F /* IQKeyboardManagerSwift */,
+			);
 			productName = "YP-Sklad";
 			productReference = F4E89AFD2C16CAB1000044CA /* YP-Sklad.app */;
 			productType = "com.apple.product-type.application";
@@ -211,6 +216,9 @@
 				Base,
 			);
 			mainGroup = F4E89AF42C16CAB1000044CA;
+			packageReferences = (
+				F4C16CA02C19A20D0090F42F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			productRefGroup = F4E89AFE2C16CAB1000044CA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -227,7 +235,7 @@
 			files = (
 				F4E89B0D2C16CAB3000044CA /* LaunchScreen.storyboard in Resources */,
 				F4E89B0A2C16CAB3000044CA /* Assets.xcassets in Resources */,
-				F47302F82C172BA500B0C027 /* GoogleService-Info.plist in Resources */,
+				F4F40EE52C1988BE00F8F41B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +525,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F4C16CA02C19A20D0090F42F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F4C16CA12C19A20D0090F42F /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C16CA02C19A20D0090F42F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F4E89AF52C16CAB1000044CA /* Project object */;
 }

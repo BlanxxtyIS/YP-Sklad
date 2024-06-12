@@ -16,20 +16,29 @@ class TabBarViewController: UITabBarController {
     }
     
     private func createViewController() -> [UIViewController] {
-        let productViewController = createNewViewController(for: ProductViewController(), title: "Товары", imageName: "checkListLogo")
-        let newProductViewController = createNewViewController(for: NewProductViewController(), title: "Создать", imageName: "plusLogo")
-        let searchViewController = createNewViewController(for: SearchViewController(), title: "Поиск", imageName: "searchLogo")
-        let scannerViewController = createNewViewController(for: ScannerViewController(), title: "Сканер", imageName: "scannerLogo")
+        let productViewController = createNewViewController(for: ProductViewController(), title: "", imageName: "checkListLogo")
+        let newProductViewController = createNewViewController(for: NewProductViewController(), title: "", imageName: "plusLogo")
+        let searchViewController = createNewViewController(for: SearchViewController(), title: "", imageName: "searchLogo")
+        let scannerViewController = createNewViewController(for: ScannerViewController(), title: "", imageName: "scannerLogo")
         return [productViewController, newProductViewController, searchViewController, scannerViewController]
     }
     
     private func createNewViewController(for rootViewController: UIViewController, title: String, imageName: String) -> UIViewController {
         let navController = UINavigationController(rootViewController: rootViewController)
-        navController.tabBarItem = UITabBarItem(title: title, image: UIImage(named: imageName), tag: 0)
-        var attrs = navController.navigationBar.titleTextAttributes ?? [:]
-        attrs[.font] = UIFont.systemFont(ofSize: 20, weight: .bold)
-        attrs[.foregroundColor] = UIColor.kUltraDarkBlue
-        navController.navigationBar.titleTextAttributes = attrs
+        let tabBarItem = UITabBarItem(title: "", image: UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal), selectedImage: nil)
+        // Уменьшаем размер изображения путем установки отрицательных отступов
+        tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 8, bottom: -8, right: 8)
+        navController.tabBarItem = tabBarItem
+        
+        // Настройка внешнего вида текста надписей на таб-баре
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 10, weight: .regular), // Размер и стиль шрифта
+            .foregroundColor: UIColor.kUltraDarkBlue // Цвет текста
+        ]
+        navController.tabBarItem.setTitleTextAttributes(attributes, for: .normal)
+        
+        
         return navController
     }
+
 }

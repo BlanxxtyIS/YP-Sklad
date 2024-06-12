@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         let userDefaults = UserDefaults.standard
-        if userDefaults.string(forKey: "onboardingView") != nil {
+        if userDefaults.string(forKey: "onboardingView1") != nil {
             window?.rootViewController = TabBarViewController()
         } else {
             window?.rootViewController = OnboardingViewController()

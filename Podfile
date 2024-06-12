@@ -4,6 +4,7 @@ target 'YP-Sklad' do
 
   use_frameworks!
 
+  pod 'FirebaseCore'
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
 

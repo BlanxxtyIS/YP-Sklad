@@ -6,14 +6,13 @@
 //
 
 import UIKit
-import FirebaseMe
 
 class WelcomeViewController: UIViewController {
     
     private lazy var backgroundImage: UIImageView = {
        let image = UIImage(named: "BackgroundImage")
         let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -81,19 +80,6 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
-        animatedLogo()
-    }
-    
-    private func animatedLogo() {
-        titleLabel.text = ""
-        var stageIndex = 0.0
-        let titleText = "👷🏻Мой Склад👷🏻"
-        titleText.forEach { char in
-            Timer.scheduledTimer(withTimeInterval: 0.20 * stageIndex, repeats: false) { _ in
-                self.titleLabel.text?.append(char)
-            }
-            stageIndex += 1
-        }
     }
     
     private func setupUI() {
@@ -115,7 +101,7 @@ class WelcomeViewController: UIViewController {
             backgroundView.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 50),
             backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            backgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -140),
+            backgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -180),
             
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 20),

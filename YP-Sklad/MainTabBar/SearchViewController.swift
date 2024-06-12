@@ -12,7 +12,7 @@ class SearchViewController: UIViewController {
     private lazy var backgroundImage: UIImageView = {
        let image = UIImage(named: "BackgroundImage")
         let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -28,7 +28,8 @@ class SearchViewController: UIViewController {
         view.addSubview(backgroundImage)
         
         NSLayoutConstraint.activate([
+            backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backgroundImage.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
+            backgroundImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)])
     }
 }
