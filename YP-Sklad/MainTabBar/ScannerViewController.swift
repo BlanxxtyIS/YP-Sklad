@@ -7,6 +7,8 @@
 
 import UIKit
 import AVFoundation
+import FirebaseAuth
+import FirebaseFirestore
 
 protocol ScannerViewControllerDelegate: AnyObject {
     func getQrData(product: ProductModel)
@@ -14,15 +16,17 @@ protocol ScannerViewControllerDelegate: AnyObject {
 
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
+    private let db = Firestore.firestore()
+    let newProductVC = NewProductViewController()
     weak var delegate: ScannerViewControllerDelegate?
     let pattern = #"(?m)(?<=Наименование:\s")(.+)(?=")|(?<=Размер X:\s)(\d+)|(?<=Размер Y:\s)(\d+)|(?<=Размер Z:\s)(\d+)|(?<=Вес:\s)(\d+\sкг.)|(?<=Количество:\s)(\d+)|(?<=Цена:\s)(\d+\.\d+р)|(?<=Можно складировать:\s)(Да|Нет)|(?<=Поставщик:\s)(.+)|(?<=Тип товара:\s")(.+)(?=")"#
     var input: String = ""
-
+    
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
     private lazy var backgroundImage: UIImageView = {
-       let image = UIImage(named: "BackgroundImage")
+        let image = UIImage(named: "BackgroundImage")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -99,7 +103,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         previewLayer.videoGravity = .resizeAspectFill
         previewLayer.masksToBounds = true
         cameraView.layer.addSublayer(previewLayer)
-    
+        
         // Запуск сессии захвата
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             self?.captureSession.startRunning()
@@ -149,12 +153,12 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 self?.captureSession.startRunning()
             }
         }
-
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+        
         // Останавливаем сессию в фоновом потоке
         if captureSession?.isRunning == true {
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
@@ -203,10 +207,39 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         input = code
         print("Найден QR код: \(code)")
         let data = extractData(from: input, with: pattern)
-        let qrProduct = ProductModel(id: UUID(), name: data[0], sizeX: data[1], sizeY: data[2], sizeZ: data[3], weigth: data[4], count: data[5], price: data[6], stack: data[7], counterparty: data[8], image: UIImage(named: "Двигатель"), type: data[9])
+        let qrProduct = ProductModel(id: "UUID()", name: data[0], sizeX: data[1], sizeY: data[2], sizeZ: data[3], weigth: data[4], count: data[5], price: data[6], stack: data[7], counterparty: data[8], image: UIImage(named: "Двигатель"), type: data[9])
         delegate?.getQrData(product: qrProduct)
         print(data)
+        if let sender = Auth.auth().currentUser?.email {
+            db.collection("infoBody").addDocument(data: [
+                "id": "UUID",
+                "sender": sender,
+                "date": Date().timeIntervalSince1970,
+                "name" : data[0],
+                "sizeX" : data[1],
+                "sizeY" : data[2],
+                "sizeZ" : data[3],
+                "weight" : data[4],
+                "count" : data[5],
+                "price" : data[6],
+                "stack" : data[7],
+                "counterparty" : data[8],
+                "image" : "Картинка",
+                "type" : data[9]
+            ]) { error in
+                if let e = error {
+                    print("\(e) - Ошибка при сохранении в FireStore")
+                    return
+                } else {
+                    print("Successfully! Данные сохранены")
+                    return
+                }
+            }
+        }
     }
+
+    
+    
     
     private func extractData(from text: String, with pattern: String) -> [String] {
         let regex = try! NSRegularExpression(pattern: pattern, options: [])

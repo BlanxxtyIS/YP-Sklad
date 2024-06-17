@@ -8,7 +8,7 @@
 import UIKit
 
 struct ProductModel {
-    let id: UUID
+    let id: String
     let name: String
     let sizeX: String, sizeY: String, sizeZ: String
     let weigth: String

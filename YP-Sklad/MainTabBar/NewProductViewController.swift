@@ -8,14 +8,14 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
-
-
+import FirebaseStorage
 
 class NewProductViewController: UIViewController {
     
     // MARK: - Public Properties
     // MARK: - Private Properties
-    let scaner = ScannerViewController()
+    let storage = Storage.storage()
+    var test = ""
     private let db = Firestore.firestore()
     private var productImage = UIImage(named: "003-delivery")
     
@@ -370,7 +370,11 @@ class NewProductViewController: UIViewController {
         view.backgroundColor = UIColor.white
         title = "Новый товар"
         setupUI()
-        scaner.delegate = self
+        //loadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         //loadData()
     }
     
@@ -379,7 +383,8 @@ class NewProductViewController: UIViewController {
     // MARK: - Private Methods
     @objc
     private func addQrCode() {
-        navigationController?.pushViewController(scaner, animated: true)
+        let vc = ScannerViewController()
+        present(vc, animated: true)
     }
     
     @objc
@@ -391,8 +396,46 @@ class NewProductViewController: UIViewController {
         present(imagePickerController, animated: true, completion: nil)
     }
     
+    //Отправить в DB
     @objc
     private func saveProductButtonTapped() {
+        guard let name = productNameCreate.text,
+              let sender = Auth.auth().currentUser?.email,
+              let image = UIImage(named: "Диск1"),
+              let imageData = image.jpegData(compressionQuality: 0.8) else {
+            print("Ошибка: не удалось получить данные изображения")
+            return
+        }
+        
+        let imageID = UUID().uuidString
+        let storageRef = Storage.storage().reference().child("images/\(imageID).jpg")
+        
+        // Загрузка изображения в Firebase Storage
+        storageRef.putData(imageData, metadata: nil) { metadata, error in
+            if let error = error {
+                print("Ошибка при загрузке изображения в Storage: \(error)")
+                return
+            }
+            
+            // Получение URL загруженного изображения
+            storageRef.downloadURL { url, error in
+                if let error = error {
+                    print("Ошибка при получении URL изображения: \(error)")
+                    return
+                }
+                
+                guard let imageUrl = url?.absoluteString else {
+                    print("Ошибка: не удалось получить URL изображения")
+                    return
+                }
+                
+                // Сохранение данных в Firestore
+                self.saveProductToFirestore(imageUrl: imageUrl)
+            }
+        }
+    }
+    
+    private func saveProductToFirestore(imageUrl: String) {
         if let name = productNameCreate.text,
            let sender = Auth.auth().currentUser?.email {
             db.collection("infoBody").addDocument(data: [
@@ -408,7 +451,7 @@ class NewProductViewController: UIViewController {
                 "price" : productPriceCreate.text!,
                 "stack" : productScladingCreate.text!,
                 "counterparty" : productKontagentCreate.text!,
-                "image" : "Картинка",
+                "image" : imageUrl,
                 "type" : productTypeCreate.text!
             ]) { error in
                 if let e = error {
@@ -416,27 +459,6 @@ class NewProductViewController: UIViewController {
                 } else {
                     print("Successfully! Данные сохранены")
                     self.successufulImageView()
-                }
-            }
-        }
-    }
-
-    //Достать из 'Firebase Cloud Firestore' данные
-    private func loadData() {
-        //var messages: [String] = []
-        db.collection("infoBody").order(by: "date").getDocuments { querySnapshot, error in
-            if let e = error {
-                print("\(e) Ошибка при загрузке данных")
-            } else {
-                if let data = querySnapshot?.documents {
-                    self.successufulImageView()
-                    data.forEach { document in
-                        let data = document.data()
-                        let sender = data["sender"] as? String
-                        let dataBody = data["info"] as? String
-                        let sizeX = data["sizeX"] as! String
-                        print("Отправитель: \(sender), сообщение: \(dataBody), размер \(sizeX)")
-                    }
                 }
             }
         }

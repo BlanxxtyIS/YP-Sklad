@@ -14,42 +14,10 @@
             filePath = "YP-Sklad/MainTabBar/NewProductViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "585"
-            endingLineNumber = "585"
-            landmarkName = "NewProductViewController"
-            landmarkType = "21">
-            <Locations>
-               <Location
-                  uuid = "B2497B41-9546-4DA6-95E5-5EA1FA1498D6 - f55c84749840ce16"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "YP_Sklad.NewProductViewController.imagePickerController(_: __C.UIImagePickerController, didFinishPickingMediaWithInfo: Swift.Dictionary&lt;__C.UIImagePickerControllerInfoKey, Any&gt;) -&gt; ()"
-                  moduleName = "YP-Sklad"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marathasanov/Desktop/YP%20Sklad/YP-Sklad/YP-Sklad/MainTabBar/NewProductViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "585"
-                  endingLineNumber = "585"
-                  offsetFromSymbolStart = "340">
-               </Location>
-               <Location
-                  uuid = "B2497B41-9546-4DA6-95E5-5EA1FA1498D6 - c25ad2ba4326ecb5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "YP_Sklad.NewProductViewController.getQrData(product: YP_Sklad.ProductModel) -&gt; ()"
-                  moduleName = "YP-Sklad"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marathasanov/Desktop/YP%20Sklad/YP-Sklad/YP-Sklad/MainTabBar/NewProductViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "586"
-                  endingLineNumber = "586"
-                  offsetFromSymbolStart = "84">
-               </Location>
-            </Locations>
+            startingLineNumber = "607"
+            endingLineNumber = "607"
+            landmarkName = "getQrData(product:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -62,42 +30,10 @@
             filePath = "YP-Sklad/MainTabBar/NewProductViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "586"
-            endingLineNumber = "586"
+            startingLineNumber = "608"
+            endingLineNumber = "608"
             landmarkName = "getQrData(product:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "96B2FFAD-C4B7-4EE5-98DF-BEC043395F75 - f55c84749840ce35"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "YP_Sklad.NewProductViewController.imagePickerController(_: __C.UIImagePickerController, didFinishPickingMediaWithInfo: Swift.Dictionary&lt;__C.UIImagePickerControllerInfoKey, Any&gt;) -&gt; ()"
-                  moduleName = "YP-Sklad"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marathasanov/Desktop/YP%20Sklad/YP-Sklad/YP-Sklad/MainTabBar/NewProductViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "586"
-                  endingLineNumber = "586"
-                  offsetFromSymbolStart = "356">
-               </Location>
-               <Location
-                  uuid = "96B2FFAD-C4B7-4EE5-98DF-BEC043395F75 - c25ad2ba4326ecb5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "YP_Sklad.NewProductViewController.getQrData(product: YP_Sklad.ProductModel) -&gt; ()"
-                  moduleName = "YP-Sklad"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marathasanov/Desktop/YP%20Sklad/YP-Sklad/YP-Sklad/MainTabBar/NewProductViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "586"
-                  endingLineNumber = "586"
-                  offsetFromSymbolStart = "84">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
